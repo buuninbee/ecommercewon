@@ -1,16 +1,38 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import globals from 'globals'
+import tseslintParser from '@typescript-eslint/parser'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-];
-
-export default eslintConfig;
+/** @type {import('eslint').Linter.Config} */
+export default {
+  files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+  languageOptions: {
+    parser: tseslintParser,
+    parserOptions: {
+      ecmaVersion: 2021,
+      sourceType: 'module',
+      ecmaFeatures: {
+        jsx: true
+      }
+    },
+    globals: globals.browser
+  },
+  plugins: ['@typescript-eslint', 'react'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'next/core-web-vitals',
+    'prettier'
+  ],
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'react/hooks/exhaustive-deps': 'warn',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-esçont/explicit-module-boundary-types': 'off'
+  }
+}
