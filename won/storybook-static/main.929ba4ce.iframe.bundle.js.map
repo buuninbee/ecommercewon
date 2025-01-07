@@ -1,0 +1,1 @@
+{"version":3,"file":"main.929ba4ce.iframe.bundle.js","mappings":";;;;;;;;;;;;;;AAGA","sources":["webpack://won/./.storybook/preview.tsx"],"sourcesContent":["import React from 'react'\nimport GloblaStyles from '../src/styles/global'\n\nexport const decorators = [\n  (Story) => (\n    <>\n      <GloblaStyles />\n      <Story />\n    </>\n  )\n]\n"],"names":[],"sourceRoot":""}
